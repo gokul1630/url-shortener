@@ -1,0 +1,28 @@
+
+.btn-black{
+  background-color: #000 !important;
+  color: #fff;
+  border-radius: 25px;
+}
+.btn-black:hover{
+  background-color: #fff !important;
+  color: #000;
+  border-radius: 25px;
+  border-color: #000;
+}
+
+.customInput {
+  border-radius: 25px;
+}
+
+body {
+  background-image: linear-gradient(to bottom right, #9796f0, #fbc7d4);
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+  color: #000;
+}
