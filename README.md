@@ -1,3 +1,3 @@
 ## Shrink me
 
-URL shortner
+URL shortener
