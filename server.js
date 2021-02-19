@@ -12,7 +12,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false); 
 mongoose.set('useCreateIndex', true); 
 mongoose.set('useUnifiedTopology', true); 
-mongoose.connect('mongodb+srv://root:root@cluster0.krm1f.mongodb.net/testdb?retryWrites=true&w=majority').then(console.log("DB connected"))
+mongoose.connect('mongodb://localhost:27017/testdb').then(console.log("DB connected"))
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine',  'ejs')
@@ -107,4 +107,4 @@ app.get('/:shortUrl', async (req,res) => {
   res.redirect(shortUrl.full)
 })
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 80);
