@@ -8,14 +8,17 @@
   <title>Document</title>
 </head>
 <body> 
-  <div class="container">
-    <h1>URL shortener</h1>
-    <form action="/shortUrls" method="POST" class="my-4 form-inline">
+  <div class="col-lg-2"></div>
+  <div class="container col-lg-8 ">
+    <h1>Shrink me ☹</h1>
+    <form action="/shortUrls" method="POST" class="my-2 form-inline">
       <label for="fullUrl" class="sr-only">URL</label>
       <input type="url" placeholder="Enter URL" name="fullUrl" id="fullUrl" class="form-control col mr-2">
-      <button class="btn btn-success" type="submit">Shrink</button>
+      <label for="sURL" class="sr-only">URL</label>
+      <input type="text" placeholder="Enter shortname for URL" name="sURL" id="sURL" class="form-control col mr-2">
+      <button class="btn btn-success my-2" type="submit">Shrink</button>
     </form>
-    <table class="table table-striped table-responsive">
+    <table class="table table-striped table-responsive mt-3">
       <thead>
         <tr>
           <th>Full URL</th>
@@ -26,9 +29,9 @@
       <tbody>
         <% shortUrls.forEach(shortUrl => { %>
         <tr>
-          <td><a href="<%  shortUrl.full %>"><%  shortUrl.full %></a></td>
-          <td><a href="<%  shortUrl.short %>"><%  shortUrl.short %></a></td>
-          <td><%  shortUrl.clicks %></td>
+          <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+          <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+          <td><%= shortUrl.click %></td>
         </tr>
      <%  }) %>
       </tbody>
