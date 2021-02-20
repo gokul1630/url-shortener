@@ -14,21 +14,21 @@ For now the register option is hidden in UI but you can create new user by going
 
 you can simply run this in your local machine by typing below commands
 
-*make sure you have node and mongodb(local) installed*
-```git clone https://github.com/aruntemme/url-shortener```
-```cd url-shortener```
+```git clone https://github.com/aruntemme/url-shortener```<br>
+```cd url-shortener```<br>
+*make sure you have node and mongodb(local) installed*<br>
 you can configure db settings in ```server.js``` <br>
 ```mongoose.connect('mongodb://localhost:27017/YOURDB_NAME').then(console.log("DB connected"))```<br>
 change db name as per your wish<br>
 
-Install all dependencies
+Install all dependencies<br>
 ```npm i```<br>
 
-Run 
-```npm run devStart```
+Run <br>
+```npm run devStart```<br>
 
-check your localhost
-```http://localhost:8000/```
+check your localhost<br>
+```http://localhost:8000/```<br>
 
 # Tasks
 
