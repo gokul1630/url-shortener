@@ -27,6 +27,9 @@ Install all dependencies
 Run 
 ```npm run devStart```
 
+check your localhost
+```http://localhost:8000/```
+
 # Tasks
 
 - [x] table to list previous urls
