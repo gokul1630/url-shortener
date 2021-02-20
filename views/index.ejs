@@ -2,9 +2,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <link href="/css/style.css" rel="stylesheet" type="text/css">
   <title>Shrink me</title>
 </head>
@@ -27,13 +27,17 @@
       <button class="btn btn-black" type="submit">Shrink</button>
     </form>
     <div class="my-2 form-inline mt-4">
-      <div class="m-0 row">
-        <h5 class="">Shrinked URL :</h5>
+      <div class="m-0 row d-flex align-items-center">
+        <h5 class="mt-0">Shrinked URL :</h5>
         <% var lastvalue %>
         <% shortUrls.forEach(shortUrl => { %>
           <% lastvalue  = shortUrl.short; %>
           <%  }) %>
-         <a class="ml-3" href="<%= lastvalue%>" target="_blank"><h5><%= lastvalue%></h5></a>
+         <a class="ml-3" onclick='<%= clickHandler %>' id="shortU" href="<%= lastvalue%>" target="_blank"><h5 class="mt-0">https://shrink.guvi.in/<%= lastvalue%></h5></a>
+         <button class="btn btn-black ml-5" onclick='<%= clickHandler %>' type="button" id="copyBtn">Copy</button>
+         <div class="alert alert-light link-copied m-0 ml-5" id="link-copied" role="alert">
+          Link Copied Successfully
+        </div>
       </div>  
     </div>
     <h6 class="mt-4">Recent Urls and Clicks</h6>
@@ -58,3 +62,20 @@
 
   </div>
 </body>
+<script>
+   $('#link-copied').hide();
+    function copyLink(){    
+      const $temp = $('<input>');
+      const url = $('#shortU').attr('href');
+      const shortUrl = `https://shrink.guvi.in/${url}`
+    document.addEventListener('copy', function(e) {
+      e.clipboardData.setData('text/plain', shortUrl);
+      e.preventDefault();
+    }, true);
+
+    document.execCommand('copy'); 
+
+      $('#link-copied').show();
+      setTimeout(() => { $('#link-copied').hide(); }, 2000);
+  }
+</script>

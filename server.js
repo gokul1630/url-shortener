@@ -43,10 +43,11 @@ app.get("/", function (req, res) {
   res.render("login"); 
 }); 
 
+
 // Showing secret page 
-app.get("/userprofile", isLoggedIn, async (req, res) => { 
+app.get("/userprofile", isLoggedIn, async (req, res) => {
   const shortUrls = await ShortUrl.find()
-  res.render("index", { shortUrls: shortUrls}); 
+  res.render("index", { shortUrls: shortUrls, clickHandler:"copyLink();"}); 
 }); 
 
 //Auth Routes
