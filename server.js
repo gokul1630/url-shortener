@@ -107,4 +107,4 @@ app.get('/:shortUrl', async (req,res) => {
   res.redirect(shortUrl.full)
 })
 
-app.listen(process.env.PORT || 80);
+app.listen(process.env.PORT || 8000);
