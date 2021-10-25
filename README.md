@@ -21,14 +21,20 @@ you can configure db settings in ```server.js``` <br>
 ```mongoose.connect('mongodb://localhost:27017/YOURDB_NAME').then(console.log("DB connected"))```<br>
 change db name as per your wish<br>
 
-Install all dependencies<br>
-```npm i```<br>
+# Install all dependencies
+```
+npm i
+```
 
-Run <br>
-```npm run devStart```<br>
+Run
+```
+npm run devStart
+```
 
-check your localhost<br>
-```http://localhost:8000/```<br>
+check your localhost
+```
+http://localhost:8000/
+```
 
 # Tasks
 
