@@ -4,31 +4,31 @@ const ShortUrl = require('./models/shortUrl')
 const passport = require("passport")
 const bodyParser = require("body-parser")
 const LocalStrategy = require("passport-local")
-const passportLocalMongoose =  require("passport-local-mongoose") 
+const passportLocalMongoose =  require("passport-local-mongoose")
 const User = require("./models/user")
 const app = express()
 
-mongoose.set('useNewUrlParser', true); 
-mongoose.set('useFindAndModify', false); 
-mongoose.set('useCreateIndex', true); 
-mongoose.set('useUnifiedTopology', true); 
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 mongoose.connect('mongodb://localhost:27017/testdb').then(console.log("DB connected"))
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine',  'ejs')
 
 app.use(express.urlencoded({ extended: false }))
-app.use(bodyParser.urlencoded({ extended: true })); 
-  
-app.use(require("express-session")({ 
-    secret: "guvi", 
-    resave: false, 
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(require("express-session")({
+    secret: "guvi",
+    resave: false,
     saveUninitialized: false
 }))
 
-passport.use(new LocalStrategy(User.authenticate())); 
-passport.serializeUser(User.serializeUser()); 
-passport.deserializeUser(User.deserializeUser()); 
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 app.use(passport.initialize())
@@ -38,24 +38,24 @@ app.use(passport.session())
 //   res.render('index', { shortUrls: shortUrls})
 // })
 
-// Showing home page 
-app.get("/", function (req, res) { 
-  res.render("login"); 
-}); 
+// Showing home page
+app.get("/", function (req, res) {
+  res.render("login");
+});
 
 
-// Showing secret page 
+// Showing secret page
 app.get("/userprofile", isLoggedIn, async (req, res) => {
   const shortUrls = await ShortUrl.find()
-  res.render("index", { shortUrls: shortUrls, clickHandler:"copyLink();"}); 
-}); 
+  res.render("index", { shortUrls: shortUrls, clickHandler:"copyLink();"});
+});
 
 //Auth Routes
 app.get("/login",(req,res)=>{
     res.render("login");
 });
 
-//Handling user login 
+//Handling user login
 app.post("/login",passport.authenticate("local",{
   successRedirect:"/userprofile",
   failureRedirect:"/login"
@@ -66,20 +66,26 @@ app.get("/register-signin",(req,res)=>{
     res.render("register");
 });
 
-app.post("/register",(req,res)=>{
-    
-  User.register(new User({username: req.body.username}),req.body.password,function(err,user){
+app.post("/register", (req, res) => {
+  const adminPassword = '123456'
+  const {admin_password}=req.body
+  if (adminPassword === admin_password) {
+    console.log(adminPassword,admin_password);
+    User.register(new User({username: req.body.username}),req.body.password,function(err,user){
       if(err){
           console.log(err);
           res.render("register");
       }
   passport.authenticate("local")(req,res,() =>{
       res.redirect("/login");
-  })    
   })
+  })
+  } else {
+    res.redirect("/register-signin")
+  }
 })
 
-//Handling user logout  
+//Handling user logout
 app.get("/logout",(req,res)=>{
   req.logout();
   res.redirect("/");
