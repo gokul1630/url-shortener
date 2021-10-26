@@ -70,7 +70,6 @@ app.post("/register", (req, res) => {
   const adminPassword = '123456'
   const {admin_password}=req.body
   if (adminPassword === admin_password) {
-    console.log(adminPassword,admin_password);
     User.register(new User({username: req.body.username}),req.body.password,function(err,user){
       if(err){
           console.log(err);
