@@ -1,10 +1,9 @@
-
-.btn-black{
+.btn-black {
   background-color: #000 !important;
   color: #fff;
   border-radius: 25px;
 }
-.btn-black:hover{
+.btn-black:hover {
   background-color: #fff !important;
   color: #000;
   border-radius: 25px;
@@ -29,5 +28,4 @@ a:hover {
 
 .link-copied {
   height: auto;
-  
 }

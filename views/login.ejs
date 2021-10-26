@@ -1,11 +1,15 @@
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <link href="/css/style.css" rel="stylesheet" type="text/css" />
   <title>Shrink me</title>
 </head>
 <body>
@@ -14,20 +18,35 @@
     <h4>(URL shortener)</h4>
     <h2 class="mt-4">Login</h2>
   </div>
-<div class="container mt-5 d-flex justify-content-center">
-     <div class="login-form">
+  <div class="container mt-5 d-flex justify-content-center">
+    <div class="login-form">
       <form action="/login" method="POST">
         <div class="form-group">
           <label for="username" class="sr-only">UserName</label>
-          <input type="text" class="form-control customInput" placeholder="username" id="xyz" name="username">
+          <input
+            type="text"
+            class="form-control customInput"
+            placeholder="username"
+            id="xyz"
+            name="username"
+          />
         </div>
         <div class="form-group">
-
           <label for="password" class="sr-only">Password</label>
-          <input type="password" placeholder="password" class="form-control customInput" id="password" name="password">
+          <input
+            type="password"
+            placeholder="password"
+            class="form-control customInput"
+            id="password"
+            name="password"
+          />
         </div>
         <button class="btn btn-black">Login</button>
       </form>
-      <h6>Don't have an account? <strong><a href="/register-signin">SignUp</a></strong></h6>
-     </div>
-</div>
+      <h6>
+        Don't have an account?
+        <strong><a href="/register-signin">SignUp</a></strong>
+      </h6>
+    </div>
+  </div>
+</body>
